@@ -15,6 +15,8 @@ import com.controller.action.JoinAction;
 import com.controller.action.LoginAction;
 import com.controller.action.MemberListAction;
 import com.controller.action.RegEmployeeAction;
+import com.controller.action.ajaxAction;
+
 
 @WebServlet(urlPatterns = "*.do")
 public class FrontController extends HttpServlet {
@@ -66,6 +68,12 @@ public class FrontController extends HttpServlet {
 			action.execute(request, response);
 			viewPage="/employee/employee.jsp";
 			System.out.println(viewPage);
+		}else if(command.equals("ajaxTest.do"))
+		{
+			viewPage ="/openProject/ajax.jsp";
+			System.out.println(viewPage);
+			action= new ajaxAction();
+			action.execute(request, response);
 		}
 		
 		

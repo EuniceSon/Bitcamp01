@@ -7,10 +7,10 @@
 <head>
     <meta charset="UTF-8">
     <title>메인 페이지</title>
-   
 </head>
 <jsp:include page="top.jsp"></jsp:include>
 <body>
+
     <% 
     	if(request.getAttribute("result")!=null){
     	int res= (int)request.getAttribute("result");
@@ -31,7 +31,7 @@
     	
     	}
     %>
-    <div style="width:1250px; margin:0 auto; background-color: pink; height:600px;">
+    <div style="width:1220px; margin:0 auto; background-color: pink; height:600px;">
     	
     	<h1>메인페이지</h1>
     </div>

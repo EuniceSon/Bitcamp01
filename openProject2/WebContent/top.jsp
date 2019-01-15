@@ -50,8 +50,8 @@
 
 </body>
 <script>
-	$('#myPage, #memberList').click(function(){
-		
+	$('#myPage').click(function(){
+		// #memberList
 		if(<%=userID%>==null){
 			alert('로그인을 해주시기 바랍니다.')
 			console.log($(this).attr('href','<%=request.getContextPath() %>/login/login.jsp'))
