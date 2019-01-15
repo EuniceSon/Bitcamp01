@@ -1,0 +1,13 @@
+
+.top {width: 1000px; margin: 0 auto;}
+.top h2 {margin:20px 0; border-bottom: 1px solid silver; 
+        padding: 20px 0;}
+.container {width:1000px; margin: 0 auto;}
+table {width: 95%;  border-collapse: collapse;}
+tr {border-bottom: 1px solid silver; }
+
+.Thead  {border-bottom: 3px solid silver; height: 40px}
+td {text-align: center}
+
+
+
