@@ -31,6 +31,31 @@
     	
     	}
     %>
+    <%
+	if(request.getParameter("joinSuc")!=null){
+		 int join = Integer.parseInt(request.getParameter("joinSuc"));
+		 
+		 if(join>0){
+	%>
+	<h1><%=join %></h1>
+		<script>
+			alert('회원가입에 성공하셨습니다!')
+		</script>
+	<% 
+		 
+		 }
+		 else{
+	%>
+		<script>
+			alert('회원가입에 실패하셨습니다. 다시 시도해 주세요')
+			location.href="<%=request.getContextPath() %>/myPage/myPage.jsp";
+		</script>
+
+	<%
+		 }
+		}
+    
+    %>
     <div style="width:1220px; margin:0 auto; background-color: pink; height:600px;">
     	
     	<h1>메인페이지</h1>

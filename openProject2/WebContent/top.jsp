@@ -17,6 +17,7 @@
 	if(session.getAttribute("memberDto")!=null){
 		 userID= ((MemberDTO)session.getAttribute("memberDto")).getMemberId();
 	}
+	
 
 %>
 

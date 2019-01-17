@@ -24,7 +24,9 @@ public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("front  :  "+request.getParameter("memberId"));
+		//System.out.println("front  :  "+request.getParameter("Id"));
+//		System.out.println("front  :  "+request.getParameter("newName"));
+		
 		// 한글 인코딩 처리
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
@@ -46,7 +48,7 @@ public class FrontController extends HttpServlet {
 			action = new JoinAction();
 			action.execute(request, response);
 			viewPage ="/main.jsp";
-			System.out.println(viewPage);
+		//	System.out.println(viewPage);
 		}
 			else if(command.equals("login/LoginAction.do")) {
 			action = new LoginAction();
@@ -58,11 +60,19 @@ public class FrontController extends HttpServlet {
 			action = new MemberListAction();
 			action.execute(request, response);
 			viewPage="/memberList/Memberlist.jsp";
-		}else if(command.equals("EmployeeList.do")) {
+		}else if(command.equals("ajaxModi.do")) {
+			action = new ajaxAction();
+			action.execute(request, response);
+			//System.out.println("태주야 이건 읽힐거야");
+			viewPage="ajaxModiTest.do";
+		}
+		
+		else if(command.equals("EmployeeList.do")) {
 			action = new EmployeeListAction();
 			action.execute(request, response);
 			viewPage="/employee/employee.jsp";
-		}else if(command.equals("employee/regEmployee.do")) {
+		}
+		else if(command.equals("employee/regEmployee.do")) {
 			action = new RegEmployeeAction();
 			action = new EmployeeListAction();
 			action.execute(request, response);
@@ -77,6 +87,7 @@ public class FrontController extends HttpServlet {
 		}
 		
 		
+		//System.out.println(" 그만 재촉해....:    "+viewPage);
 		RequestDispatcher rd = request.getRequestDispatcher(viewPage);
 		rd.forward(request, response);
 		

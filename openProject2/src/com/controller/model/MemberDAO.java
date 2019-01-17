@@ -163,13 +163,55 @@ public class MemberDAO {
 			e.printStackTrace();
 		}finally {
 			if(pstmt != null) try{pstmt.close();}catch(SQLException e){} 
-					
+			if(conn != null) try{conn.close();}catch(SQLException e){}   
+
 		}
 		return null;
 		
 		
 	}
-	
+	public int updateMember (String id, String replaced) {
+		
+		 PreparedStatement pstmt = null;
+		 ResultSet rs = null;
+		 String sql="update member set memberName =? where memberId =?; ";
+//		 String sql2 ="select * from member ;";
+		 try {
+			 
+			 // 연결 된  conn 은 prepareStatement() 메소드를  가지고 있다
+			 pstmt =(PreparedStatement)this.conn.prepareStatement(sql);
+			 pstmt.setString(1, replaced);
+			 pstmt.setString(2, id);
+			 pstmt.executeUpdate();
+//			 pstmt= (PreparedStatement) conn.prepareCall(sql2);
+//			 List<MemberDTO> list = new ArrayList<MemberDTO>();
+//			 rs=pstmt.executeQuery();
+//			 while(rs.next()) {
+//				 MemberDTO mDto = new MemberDTO();
+//				 mDto.setMemberNo(rs.getInt("no"));
+//				 mDto.setMemberId(rs.getString("memberId"));
+//				 mDto.setMemberPwd(rs.getString("memberPwd"));
+//				 mDto.setMemberName(rs.getString("memberName"));
+//				 mDto.setPicture(rs.getString("memberPic"));
+//				 mDto.setJoinDate(rs.getString("joinDate"));
+//				 list.add(mDto);
+				 
+//			 }
+			 return 1;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			if(pstmt != null) try{pstmt.close();}catch(SQLException e){} 
+			
+					
+		}
+		
+		
+		return -1;
+		
+	}
 	
 	
 	

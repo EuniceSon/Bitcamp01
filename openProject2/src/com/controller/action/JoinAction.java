@@ -22,12 +22,16 @@ public class JoinAction implements Action {
 		
 
 		// 회원가입 입력폼 창에서 넘어온 데이터 처리해 주자.
-//				String memberPwd= request.getParameter("memberPwd").trim();
-//				String memberName= request.getParameter("memberName").trim();
+				String memberPwd= request.getParameter("memberPwd").trim();
+				String memberName= request.getParameter("memberName").trim();
 //				String memberPic = request.getParameter("picture").trim();
-//				String memberId = request.getParameter("memberId").trim();
-//				System.out.println(memberId);
-//				System.out.println(memberPic);
+				String memberId = request.getParameter("memberId").trim();
+				String memberPic="";
+				
+				System.out.println(memberId);
+				System.out.println(memberName);
+				System.out.println(memberPwd);
+				System.out.println(memberPic);
 				
 				
 //				//업로드용 폴더 이름
@@ -45,34 +49,35 @@ public class JoinAction implements Action {
 //				
 				
 				
-//				MemberDTO mDTO = new MemberDTO();
-//				mDTO.setMemberId(memberId);
-//				mDTO.setMemberPwd(memberPwd);
-//				mDTO.setMemberName(memberName);
-//				mDTO.setPicture(memberPic);
-//				
-//				MemberDAO dao = new MemberDAO();
-//				int res = dao.insertMember(mDTO);
-//				
-//				
-//				PrintWriter out;
-//				try {
-//					out = response.getWriter();
-//					if(res > 0) {  // 공지글 삽입이 성공한 경우
-//						out.println("<script>");
-//						out.println("alert('회원가입  성공')");
-//						out.println("location.href='joinForm.do'");
-//						out.println("</script>");
-//					}else {
-//						out.println("<script>");
-//						out.println("alert('회원가입 실패')");
-//						out.println("history.back()");
-//						out.println("</script>");
-//					}
-//				} catch (IOException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
+				MemberDTO mDTO = new MemberDTO();
+				mDTO.setMemberId(memberId);
+				mDTO.setMemberPwd(memberPwd);
+				mDTO.setMemberName(memberName);
+				mDTO.setPicture(memberPic);
+				
+				MemberDAO dao = new MemberDAO();
+				int res = dao.insertMember(mDTO);
+				
+				request.setAttribute("joinSuc", res);
+				
+				PrintWriter out;
+				try {
+					out = response.getWriter();
+					if(res > 0) {  // 공지글 삽입이 성공한 경우
+						out.println("<script>");
+						out.println("alert('회원가입  성공')");
+						out.println("location.href='joinForm.do'");
+						out.println("</script>");
+					}else {
+						out.println("<script>");
+						out.println("alert('회원가입 실패')");
+						out.println("history.back()");
+						out.println("</script>");
+					}
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
 	}
 }

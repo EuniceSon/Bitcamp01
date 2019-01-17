@@ -2,6 +2,7 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -20,14 +21,14 @@ import net.sf.json.JSONArray;
 /**
  * Servlet implementation class ajaxTest
  */
-@WebServlet(urlPatterns= "/ajaxTest.do")
-public class ajaxTest extends HttpServlet {
+@WebServlet(urlPatterns= "/ajaxModiTest.do")
+public class ajaxModiTest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ajaxTest() {
+    public ajaxModiTest() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,13 +41,21 @@ public class ajaxTest extends HttpServlet {
 		
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("application/json ;charset=utf-8");
+		
+		String IdValue = request.getParameter("Id");
+		String newValue = request.getParameter("newName");
+		
+		System.out.println("  :          "+IdValue+"  :          "+newValue);
 		PrintWriter out = response.getWriter();
 		MemberDAO mdao = new MemberDAO();
-		List<MemberDTO> list =  mdao.getMemberList();
-//		System.out.println(list);
+		int val=  mdao.updateMember(IdValue, newValue);
+		MemberDAO mdao2 = new MemberDAO();
+		List<MemberDTO> list  = mdao2.getMemberList();
+		System.out.println("   커넥션풀이 답인가...     :   "+list);
+		//List<MemberDTO> list = mdao.getMemberList();
+		
 		JSONArray jarr =JSONArray.fromObject(list);
 		out.print(jarr);
-		
 		
 		
 	}
