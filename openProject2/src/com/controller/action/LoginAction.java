@@ -13,7 +13,7 @@ import com.controller.model.MemberDTO;
 
 public class LoginAction implements Action {
 	
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		//가입 입력폼 창에서 넘어온 데이터 처리해 주자.
 		String memberId = request.getParameter("memberId").trim();
@@ -51,5 +51,6 @@ public class LoginAction implements Action {
 		request.setAttribute("result", result );
 		
 		
+		return "/main.jsp";
 	}
 }

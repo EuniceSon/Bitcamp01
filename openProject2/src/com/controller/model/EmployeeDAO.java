@@ -87,6 +87,49 @@ public class EmployeeDAO {
 
 	}
 	
+	public List<EmployeeDTO> getEmployeeList(int firstRow, int endRow) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select a.* from (SELECT @ROWNUM := @ROWNUM + 1 AS ROWNUM, emp.* FROM emp, (SELECT @ROWNUM := 0) R)a where a.ROWNUM >= ? and a.ROWNUM< ?;";
+		try {
+
+			// 연결 된 conn 은 prepareStatement() 메소드를 가지고 있다
+			pstmt = (PreparedStatement) this.conn.prepareStatement(sql);
+			pstmt.setInt(1, firstRow);
+			pstmt.setInt(2, endRow);
+			List<EmployeeDTO> list = new ArrayList<EmployeeDTO>();
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				EmployeeDTO eDto = new EmployeeDTO();
+				eDto.setEmpno(rs.getInt(2));
+				eDto.setEname(rs.getString(3));
+				eDto.setJob(rs.getString(4));
+				eDto.setMgr(rs.getInt(5));
+				eDto.setHiredate(rs.getString(6));
+				eDto.setSal(rs.getInt(7));
+				eDto.setComm(rs.getInt(8));
+				eDto.setDeptno(rs.getInt(9));
+		
+				list.add(eDto);
+
+			}
+			return list;
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+				}
+
+		}
+		return null;
+
+	}
+	
 	public int insertEmployee(EmployeeDTO e) {
 		 PreparedStatement pstmt = null;
 //		 ResultSet rs = null;

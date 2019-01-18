@@ -12,7 +12,7 @@ import com.controller.model.MemberDTO;
 
 public class MemberListAction implements Action {
 	
-	public void execute(HttpServletRequest request, HttpServletResponse response) {
+	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		
 		
 		
@@ -23,6 +23,7 @@ public class MemberListAction implements Action {
 //		System.out.println(list.size());
 //		System.out.println(list.toString());
 		
+		return "/memberList/Memberlist.jsp";
 		
 		
 	}

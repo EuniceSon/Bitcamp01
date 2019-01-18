@@ -14,7 +14,7 @@ import com.oreilly.servlet.MultipartRequest;
 
 public class JoinAction implements Action {
 	
-	public void execute(HttpServletRequest request, HttpServletResponse response) {
+	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("되나");
 		System.out.println(request.getParameter("memberId"));
 		
@@ -60,24 +60,7 @@ public class JoinAction implements Action {
 				
 				request.setAttribute("joinSuc", res);
 				
-				PrintWriter out;
-				try {
-					out = response.getWriter();
-					if(res > 0) {  // 공지글 삽입이 성공한 경우
-						out.println("<script>");
-						out.println("alert('회원가입  성공')");
-						out.println("location.href='joinForm.do'");
-						out.println("</script>");
-					}else {
-						out.println("<script>");
-						out.println("alert('회원가입 실패')");
-						out.println("history.back()");
-						out.println("</script>");
-					}
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
+		
+				return "/main.jsp";
 	}
 }

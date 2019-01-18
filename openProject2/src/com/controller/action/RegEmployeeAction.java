@@ -14,7 +14,7 @@ import com.controller.model.MemberDTO;
 
 public class RegEmployeeAction implements Action {
 	
-	public void execute(HttpServletRequest request, HttpServletResponse response) {
+	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		
 
 		// 회원가입 입력폼 창에서 넘어온 데이터 처리해 주자.
@@ -46,6 +46,8 @@ public class RegEmployeeAction implements Action {
 		}else {
 			System.out.println("싫패");
 		}
+		
+		return "/employee/employee.jsp";
 				
 	}
 }

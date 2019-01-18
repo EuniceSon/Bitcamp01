@@ -15,7 +15,7 @@ import net.sf.json.JSONArray;
 public class  ajaxAction implements Action {
 
 	// 추상메서드
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException
 	{
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("application/json ;charset=utf-8");
@@ -28,7 +28,7 @@ public class  ajaxAction implements Action {
 		
 		
 		
-		
+		return "ajaxModiTest.do";
 		
 		
 		

@@ -47,6 +47,28 @@
 			</c:forEach>
 			
 		</table>
+		<div style="width:950px;  background-color:pink">
+			<div style="width:200px; margin:0 auto; background-color:pink">
+				 <c:if test="${currentPage > pageDivision }">
+	        	  	[<a href="<%=request.getContextPath() %>/EmployeeList.do?page=1">◀◀</a>]
+	        	  	[<a href="<%=request.getContextPath() %>/EmployeeList.do?page=${currentPage-1 }">◀</a>]
+	        	  </c:if>
+	        	  
+	        	  <c:forEach begin="${startBlock }" end="${endBlock }" var="i">
+	        	    <c:if test="${i == currentPage }">
+	        	    	<u><b>[${i }]</b></u>
+	        	    </c:if>
+	        	    <c:if test="${!(i == currentPage) }">
+	        	    	[<a href="<%=request.getContextPath() %>/EmployeeList.do?page=${i }">${i }</a>]
+	        	    </c:if>
+	        	  </c:forEach>
+	        	  
+	        	  <c:if test="${endBlock < PageTotalCount }">
+	        	  	[<a href="<%=request.getContextPath() %>/EmployeeList.do?page=${currentPage+1 }">▶</a>]
+	        	  	[<a href="<%=request.getContextPath() %>/EmployeeList.do?page=${PageTotalCount  }">▶▶</a>]
+	        	  </c:if>
+			</div>
+		</div>
 
 	</div>
 

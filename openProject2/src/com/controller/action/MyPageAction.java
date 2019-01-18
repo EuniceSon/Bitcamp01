@@ -5,7 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 
 public class MyPageAction implements Action {
 	
-	public void execute(HttpServletRequest request, HttpServletResponse response) {
+	public String execute(HttpServletRequest request, HttpServletResponse response) {
+		return null;
 		
 	}
 }
