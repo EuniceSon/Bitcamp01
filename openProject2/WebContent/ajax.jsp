@@ -123,7 +123,7 @@
  <input type="button" id="anotherBtn" value="다른거">
  <img src="./img/4.jpg">
  <div id="result">
- 	      <table class="table1">
+ 	     <table class="table1">
            <tr class="Thead">
         	  <th>회원번호</th>
                <th>회원 아이다(이메일)</th>

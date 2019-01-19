@@ -12,6 +12,7 @@
 </head>
  <jsp:include page="../top.jsp"></jsp:include>
 <body>
+ <div class="dimm"></div>
     <div class="top">
         <div class="inner">
             <h2> 회원 리스트 </h2>
@@ -44,7 +45,7 @@
                <td><%= mdto.getMemberName() %></td>
                <td><%= mdto.getJoinDate() %></td>
                <td>
-                   <a href="#">수정</a>
+                   <a href="modiBtn">수정</a>
                    <a href="#">삭제</a>
                </td>
            </tr>
@@ -52,6 +53,8 @@
        </table>
        
    </div>
+   
+ 
     
 </body>
 </html>

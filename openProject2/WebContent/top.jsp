@@ -41,7 +41,7 @@
                  <li><a href="<%-- <%=request.getContextPath() %>/login/logout.jsp --%>#" id="logout">로그아웃</a></li>
                 <%} %>
                 <li><a href="<%=request.getContextPath() %>/myPage/myPage.jsp" id="myPage">회원마이페이지(회원)</a></li>
-                <li><a href="<%=request.getContextPath() %>/Memberlist.do" id="memberList">회원리스트(회원)</a></li>
+                <li><a href="<%=request.getContextPath() %>/Memberlist2.do" id="memberList">회원리스트(회원)</a></li>
                 <li><a href="<%=request.getContextPath() %>/EmployeeList.do">사원리스트</a></li>
                 <li><a href="<%=request.getContextPath() %>/employee/regEmployee.jsp">사원등록</a></li>
             </ul>

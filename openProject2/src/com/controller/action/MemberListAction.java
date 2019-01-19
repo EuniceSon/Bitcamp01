@@ -23,7 +23,7 @@ public class MemberListAction implements Action {
 //		System.out.println(list.size());
 //		System.out.println(list.toString());
 		
-		return "/memberList/Memberlist.jsp";
+		return "/memberList/Memberlist2.jsp";
 		
 		
 	}

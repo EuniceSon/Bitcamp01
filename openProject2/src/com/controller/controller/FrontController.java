@@ -23,24 +23,7 @@
 //public class FrontController extends HttpServlet {
 //	private static final long serialVersionUID = 1L;
 //	
-////	private void process(HttpServletRequest request,
-////			 HttpServletResponse response) throws ServletException, IOException {
-////			 String command = request.getParameter("cmd");
-////			 CommandHandler handler = (CommandHandler)commandHandlerMap.get(command);
-////			 if (handler == null) {
-////			 handler = new NullHandler();
-////			 }
-////			 String viewPage = null;
-////			 try {
-////			 viewPage = handler.process(request, response);
-////			 } catch (Throwable e) {
-////			 throw new ServletException(e);
-////			 }
-////			 RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
-////			 dispatcher.forward(request, response);
-////			 }
-////			}
-////	
+
 //
 //
 //	protected void service(HttpServletRequest request, HttpServletResponse response)
