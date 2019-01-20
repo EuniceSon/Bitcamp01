@@ -31,7 +31,7 @@
        <div class="nav_inner">
             <ul>
             
-                <li><a href="${pageContext.request.contextPath}/join/join.jsp">회원가입</a></li>
+                <li><a href="${pageContext.request.contextPath}/join/join2.jsp">회원가입</a></li>
                 <%
 		 		if(userID==null){  //로그인이 되있지 않은사람한테만 보임 
 		 		%>

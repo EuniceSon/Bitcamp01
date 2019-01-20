@@ -32,15 +32,16 @@ public class MemberDAO {
 	public int insertMember(MemberDTO m) {
 		 PreparedStatement pstmt = null;
 //		 ResultSet rs = null;
-		 String sql="insert into member(memberId, memberPwd, memberName, memberPic) values(? ,? ,? ,? );";
+		 String sql="insert into member(memberId, memberPwd, memberName, memberPic, originalPic) values(? ,? ,? ,?,? );";
 		 try {
 			 
 			 // 연결 된  conn 은 prepareStatement() 메소드를  가지고 있다
 			 pstmt =(PreparedStatement)this.conn.prepareStatement(sql);
-			 pstmt.setString(1, m.memberId);
-			 pstmt.setString(2, m.memberPwd);
-			 pstmt.setString(3, m.memberName);
-			 pstmt.setString(4, m.Picture);
+			 pstmt.setString(1, m.getMemberId());
+			 pstmt.setString(2, m.getMemberPwd());
+			 pstmt.setString(3, m.getMemberName());
+			 pstmt.setString(4, m.getPicture());
+			 pstmt.setString(5, m.getOrgfileName());
 			 
 			pstmt.executeUpdate();
 			return 1;
@@ -119,6 +120,7 @@ public class MemberDAO {
 				 mDto.setMemberName(rs.getString(4));
 				 mDto.setPicture(rs.getString(5));
 				 mDto.setJoinDate(rs.getString(6));
+				 mDto.setOrgfileName(rs.getString(7));
 				 //list.add(mDto);
 				 
 				 return mDto;
@@ -153,6 +155,45 @@ public class MemberDAO {
 				 mDto.setMemberName(rs.getString("memberName"));
 				 mDto.setPicture(rs.getString("memberPic"));
 				 mDto.setJoinDate(rs.getString("joinDate"));
+				 list.add(mDto);
+				 
+			 }
+			 return list;
+			 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			if(pstmt != null) try{pstmt.close();}catch(SQLException e){} 
+			if(conn != null) try{conn.close();}catch(SQLException e){}   
+
+		}
+		return null;
+		
+		
+	}
+	
+	public List<MemberDTO> getMemberList (int firstRow, int endRow){
+		 PreparedStatement pstmt = null;
+		 ResultSet rs = null;
+		 String sql="select a.* from (SELECT @ROWNUM := @ROWNUM + 1 AS ROWNUM, member.* FROM member, (SELECT @ROWNUM := 0) R)a where a.ROWNUM >= ? and a.ROWNUM< ?;";
+		 try {
+			 
+			 // 연결 된  conn 은 prepareStatement() 메소드를  가지고 있다
+			 pstmt =(PreparedStatement)this.conn.prepareStatement(sql);
+			 pstmt.setInt(1, firstRow);
+			 pstmt.setInt(2, endRow);
+			 List<MemberDTO> list = new ArrayList<MemberDTO>();
+			 rs=pstmt.executeQuery();
+			 while(rs.next()) {
+				 MemberDTO mDto = new MemberDTO();
+				 mDto.setMemberNo(rs.getInt("no"));
+				 mDto.setMemberId(rs.getString("memberId"));
+				 mDto.setMemberPwd(rs.getString("memberPwd"));
+				 mDto.setMemberName(rs.getString("memberName"));
+				 mDto.setPicture(rs.getString("memberPic"));
+				 mDto.setJoinDate(rs.getString("joinDate"));
+				 mDto.setOrgfileName(rs.getString("originalPic"));
 				 list.add(mDto);
 				 
 			 }

@@ -19,7 +19,8 @@
    </div>
    <div class="my">
       <div class="img">
-          <img src="http://cdn.shopify.com/s/files/1/2097/9875/products/LEGO-Mario-Odyssey-Square_1024x1024.jpg?v=1510066811" alt="">
+      <h1>${memberDto.picture }</h1>
+          <img src="../upload/${memberDto.picture }" alt="">
       </div>
       <div class="mem_info">
         <div><strong>회원 번호</strong><span>: ${memberDto.memberNo }</span></div>

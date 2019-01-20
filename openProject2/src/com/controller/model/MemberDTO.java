@@ -6,11 +6,14 @@ package com.controller.model;
  */
 public class MemberDTO {
 	int memberNo;
-	String memberId;
-	String memberPwd;
-	String memberName;
-	String Picture;
-	String joinDate;
+	private String memberId;
+	private String memberPwd;
+	private String memberName;
+	private String Picture;
+	private String joinDate;
+	private String orgfileName;
+
+
 
 	public MemberDTO() {
 	}
@@ -25,6 +28,19 @@ public class MemberDTO {
 		this.memberName = memberName;
 		Picture = picture;
 		this.joinDate = joinDate;
+	}
+
+
+	public MemberDTO(int memberNo, String memberId, String memberPwd, String memberName, String picture,
+			String joinDate, String orgfileName) {
+		super();
+		this.memberNo = memberNo;
+		this.memberId = memberId;
+		this.memberPwd = memberPwd;
+		this.memberName = memberName;
+		Picture = picture;
+		this.joinDate = joinDate;
+		this.orgfileName = orgfileName;
 	}
 
 
@@ -75,13 +91,24 @@ public class MemberDTO {
 	public void setJoinDate(String joinDate) {
 		this.joinDate = joinDate;
 	}
+	public String getOrgfileName() {
+		return orgfileName;
+	}
+
+
+	public void setOrgfileName(String orgfileName) {
+		this.orgfileName = orgfileName;
+	}
 
 
 	@Override
 	public String toString() {
 		return "MemberDTO [memberNo=" + memberNo + ", memberId=" + memberId + ", memberPwd=" + memberPwd
-				+ ", memberName=" + memberName + ", Picture=" + Picture + ", joinDate=" + joinDate + "]";
+				+ ", memberName=" + memberName + ", Picture=" + Picture + ", joinDate=" + joinDate + ", orgfileName="
+				+ orgfileName + "]";
 	}
-	
+
+
+
 
 }

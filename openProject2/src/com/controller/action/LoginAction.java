@@ -19,13 +19,9 @@ public class LoginAction implements Action {
 		String memberId = request.getParameter("memberId").trim();
 		String memberPwd= request.getParameter("memberPwd").trim();
 		
-		
 		//DB에서 memberId 랑 memberPwd있는지 보기 
 		MemberDAO mDao = new MemberDAO();
 		MemberDTO mDto= mDao.getMemberObj(memberId, memberPwd);
-//		System.out.println(mDto.getMemberId());
-		
-		
 
 		int result =mDao.idInvaildCheck(memberId, memberPwd);
 		System.out.println("result    :   "+ result);
@@ -36,14 +32,7 @@ public class LoginAction implements Action {
 			
 			HttpSession session=  request.getSession();
 			session.setAttribute("memberDto", mDto);
-			
-			out.println("<script>");
-			out.println("alert('로그인 성공!!!')");
-			out.println("location.href='/main.jsp'");
-			out.println("</script>");
-			//System.out.println("나와라 ");
-			
-			
+	
 		}else {
 			
 		}

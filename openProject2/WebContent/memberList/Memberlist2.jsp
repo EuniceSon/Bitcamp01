@@ -2,6 +2,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,28 +44,47 @@
                <th>회원가입일</th>
                <th>관리</th>
            </tr>
-           <% 
-           ArrayList list = ((ArrayList)request.getAttribute("list"));
+    
+        		<c:forEach items="${list2 }" var="i" varStatus="status">
            
-           for(int i=0; i<list.size(); i++){
-        	MemberDTO mdto=(MemberDTO)list.get(i);
-        	  
-        	%>
-           
-            <tr value="<%=i%>">
-               <td><%= mdto.getMemberNo() %></td>
-               <td><%= mdto.getMemberId() %></td>
-               <td><%= mdto.getMemberPwd() %></td>
-               <td><%= mdto.getPicture() %></td>
-               <td><%= mdto.getMemberName() %></td>
-               <td><%= mdto.getJoinDate() %></td>
+            <tr>
+               <td>${i.memberNo}</td>
+               <td>${i.memberId }</td>
+               <td>${i.memberPwd }</td>
+               <td>${i.orgfileName}</td>
+               <td>${i.memberName }</td>
+               <td>${i.joinDate }</td>
                <td>
                    <a href="#" class="modiBtn">수정</a>
                    <a href="#">삭제</a>
                </td>
            </tr>
-           <% }%>
+
+           	</c:forEach>
        </table>
+       <div style="background-color:pink; width:950px ; height:30px; font-weight:bold; font-size:13px'">
+       		<div style="width:100px ; margin:0 auto;">
+       			 <c:if test="${nowPage > pageDivision }">
+	        	  	[<a href="<%=request.getContextPath() %>/EmployeeList.do?page=1">◀◀</a>]
+	        	  	[<a href="<%=request.getContextPath() %>/EmployeeList.do?page=${nowPage-1 }">◀</a>]
+	        	  </c:if>
+	        	  
+       		<c:forEach begin="${startBlock }" end="${endBlock }" var="i" varStatus="status">
+       			<c:if test="${nowPage==i }">
+       				       			<span style="text-decoration:underline; color:blue">[${status.count }]</span>
+ 				</c:if>  
+ 				<c:if test="${nowPage!=i }">
+       			<a href="${pageContext.request.contextPath}/Memberlist2.do?page=${status.count }">[${status.count }]</a>
+ 				
+ 				</c:if>    		
+       		</c:forEach>
+       		 		<c:if test="${endBlock < allPage }">
+	        	  	[<a href="<%=request.getContextPath() %>/EmployeeList.do?page=${nowPage+1 }">▶</a>]
+	        	  	[<a href="<%=request.getContextPath() %>/EmployeeList.do?page=${allPage  }">▶▶</a>]
+	        	  </c:if>
+       		
+       		</div>
+       </div>
        
    </div>
    
