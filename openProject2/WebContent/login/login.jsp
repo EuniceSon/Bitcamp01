@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <title>로그인</title>
-    <link rel="stylesheet" href="../css/joinNlogin.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/joinNlogin.css">
     <link rel="stylesheet" href="../css/main.css">
     
 </head>

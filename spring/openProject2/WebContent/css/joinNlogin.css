@@ -1,0 +1,11 @@
+
+.top {width: 1000px; margin: 0 auto;}
+.top h2 {margin:20px 0; border-bottom: 1px solid silver; 
+        padding: 20px 0;}
+
+.container {width: 800px; margin: 0 auto;}
+.content table {width:500px; }
+th,td     {display: inline-block;  margin-top: 20px}
+th       {text-align: left; width: 150px;}
+td          {text-align: left; }
+.submit     { display: block; margin-top: 20px}

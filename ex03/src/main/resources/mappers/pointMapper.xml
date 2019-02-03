@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <!-- mapper namespace ="sqlid와 동일하게 작성?" -->
+
+<mapper namespace="org.zerock.mapper.PointMapper">
+	<update id="updatePoint">
+		<!-- update tbl_user set upoint=upoint+10 where uid='user03'; -->
+		update tbl_user set  upoint=upoint+#{point}  where uid=#{uid} 
+	</update>
+	
+	
+
+</mapper>

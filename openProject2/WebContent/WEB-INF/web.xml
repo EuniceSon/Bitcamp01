@@ -36,6 +36,18 @@
 		<servlet-name>FrontController2</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
+	
+	
+	<filter>
+		<filter-name>LoginCheck</filter-name>
+		<filter-class>filter.LoginCheckFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>LoginCheck</filter-name>
+		<url-pattern>/Memberlist2.do</url-pattern>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+	
 
 
 
