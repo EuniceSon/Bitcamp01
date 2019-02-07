@@ -8,12 +8,19 @@
 <meta charset="UTF-8">
 <title>사원리스트</title>
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/main.css">
+	href="resources/css/main.css"> 
+	<!-- http://localhost/web/resources/css/main.css -->
+	
+	<!-- /resources/css/main.css 할경우
+		localhost/resources/css/main.css
+	 -->
+	
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/memberList.css">
+	href="<%=request.getContextPath()%>/resources/css/memberList.css">
 </head>
 <jsp:include page="../top.jsp"></jsp:include>
 <body>
+
 	<div class="top">
 		<div class="inner">
 			<h2>사원 리스트</h2>
@@ -49,8 +56,8 @@
 		<div style="width:950px;  background-color:pink">
 			<div style="width:200px; margin:0 auto; background-color:pink">
 				 <c:if test="${currentPage > pageDivision }">
-	        	  	[<a href="<%=request.getContextPath() %>/EmployeeList.do?page=1">◀◀</a>]
-	        	  	[<a href="<%=request.getContextPath() %>/EmployeeList.do?page=${currentPage-1 }">◀</a>]
+	        	  	[<a href="<%=request.getContextPath() %>/EmployeeList?page=1">◀◀</a>]
+	        	  	[<a href="<%=request.getContextPath() %>/EmployeeList?page=${currentPage-1 }">◀</a>]
 	        	  </c:if>
 	        	  
 	        	  <c:forEach begin="${startBlock }" end="${endBlock }" var="i">
@@ -58,13 +65,13 @@
 	        	    	<u><b>[${i }]</b></u>
 	        	    </c:if>
 	        	    <c:if test="${!(i == currentPage) }">
-	        	    	[<a href="<%=request.getContextPath() %>/EmployeeList.do?page=${i }">${i }</a>]
+	        	    	[<a href="<%=request.getContextPath() %>/EmployeeList?page=${i }">${i }</a>]
 	        	    </c:if>
 	        	  </c:forEach>
 	        	  
 	        	  <c:if test="${endBlock < PageTotalCount }">
-	        	  	[<a href="<%=request.getContextPath() %>/EmployeeList.do?page=${currentPage+1 }">▶</a>]
-	        	  	[<a href="<%=request.getContextPath() %>/EmployeeList.do?page=${PageTotalCount  }">▶▶</a>]
+	        	  	[<a href="<%=request.getContextPath() %>/EmployeeList?page=${currentPage+1 }">▶</a>]
+	        	  	[<a href="<%=request.getContextPath() %>/EmployeeList?page=${PageTotalCount  }">▶▶</a>]
 	        	  </c:if>
 			</div>
 		</div>

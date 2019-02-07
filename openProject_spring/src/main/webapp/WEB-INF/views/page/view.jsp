@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +20,12 @@
    <div class="my">
       <div class="img">
       <h1>${memberVO.picture }</h1>
-          <img src="../upload/c037ee8f-9818-4409-905e-8a9139a14c18_2.jpg" alt="">
+     	 <c:if test="${empty memberVO.picture }">
+          <img src="../upload/7.jpg" alt="default">
+          </c:if>
+           <c:if test="${!empty memberVO.picture }">
+           <img src="../upload/${memberVO.picture }" alt="">
+           </c:if>
       </div>
       <div class="mem_info">
         <div><strong>회원 번호</strong><span>: ${memberVO.memberNo }</span></div>
