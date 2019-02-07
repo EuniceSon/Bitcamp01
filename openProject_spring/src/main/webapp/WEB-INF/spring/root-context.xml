@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	
+	<!-- net.sf.log4jdbc.sql.jdbcapi.DriverSpy -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
+		<property name="url" value="jdbc:log4jdbc:mysql://127.0.0.1:3306/book_ex?useSSL=false&amp;characterEncoding=UTF-8&amp;useUnicode=true"></property>
+		<property name="username" value="yuni"></property>
+		<property name="password" value="1234"></property>
+	</bean>
+	
+	<!-- MyBatis-spring 모듈 다운받아야만 사용가능  -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:/mybatis-config.xml"></property>
+		<property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml"></property>
+	</bean>
+	
+		<!-- dao 작업 완료되면 close() 해줘야 함  sqlTemplate 이 알아서 해줌 
+			SqlSessionTemplate은  MyBatis의 SqlSession인터페이스를 구현한 클래스로 기본적인 트랜잭션 관리나
+			쓰레드 처리의 안정성 등을 보장해 주고 , 데이터베이스의 연결과 종료를 책임짐 
+			SqlSessionFactory를 생성자로 주입하여 설정 
+		
+		 -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
+	</bean> 
+	
+	<context:component-scan base-package="com.yuni.persistence"></context:component-scan>
+	<context:component-scan base-package="com.yuni"></context:component-scan>
+		
+</beans>
