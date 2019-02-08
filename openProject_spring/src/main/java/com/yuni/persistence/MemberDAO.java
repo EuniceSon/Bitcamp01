@@ -10,6 +10,7 @@ public interface MemberDAO {
 	public String getTime(); // DB의 현재 시간을 확인한다.
 	
 	public void insertMember(MemberVO vo); // DB의 tbl_member 테이블에 데이터를 추가한다.
+	public void deleteMember(String memberId);
 	
 	public MemberVO readMember(String memberId) throws Exception;
 	
@@ -17,4 +18,6 @@ public interface MemberDAO {
 	
 	public List<MemberVO> listAll() throws Exception;
 	public List<MemberVO> listPage(@Param("firstRow") int firstRow,@Param("recordCountPerPage")int getRecordCountPerPage);
+
+	public void updateMember (String oldName, String newName) ;
 }

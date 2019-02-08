@@ -57,6 +57,20 @@ public class MemberDAOImpl implements MemberDAO {
 		
 		return sqlSession.selectList(namespace+".listPage", paramMap);
 	}
+
+	@Override
+	public void updateMember(String oldName, String newName) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("oldName", oldName);  //key 값이  myBatis mapper에서   #{memberId} 같아야 값이 들어감 
+		paramMap.put("newName", newName);
+		sqlSession.update(namespace+".updateMember", paramMap);
+	}
+
+	@Override
+	public void deleteMember(String memberId) {
+		sqlSession.delete(namespace+".delete", memberId);
+		
+	}
 	
 	
 }

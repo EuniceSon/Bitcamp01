@@ -34,7 +34,7 @@
                 <li><a href="<%=request.getContextPath() %>/myPage/myPageView" id="myPage">회원마이페이지(회원)</a></li>
                 <li><a href="<%=request.getContextPath() %>/Memberlist" id="memberList">회원리스트(회원)</a></li>
                 <li><a href="<%=request.getContextPath() %>/EmployeeList">사원리스트</a></li>
-                <li><a href="<%=request.getContextPath() %>/employee/regEmployee">사원등록</a></li>
+                <li><a href="<%=request.getContextPath() %>/visitorBook">방명록</a></li>
             </ul>
        </div>
     </div>  

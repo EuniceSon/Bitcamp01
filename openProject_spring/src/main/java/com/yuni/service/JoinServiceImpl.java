@@ -34,6 +34,18 @@ public class JoinServiceImpl implements JoinService {
 		
 		return memberDao.listPage(firstRow, recordCountPerPage);
 	}
+
+	@Override
+	public void modify(String oldName, String newName) {
+		memberDao.updateMember(oldName, newName);
+		
+	}
+
+	@Override
+	public void delete(String memberId) {
+		memberDao.deleteMember(memberId);
+	}
+	
 	
 	
 

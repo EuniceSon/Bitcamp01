@@ -29,5 +29,14 @@
 		select * from member limit #{firstRow}, #{getRecordCountPerPage}
 		
 	</select>
+	<update id="updateMember">
+		update member set memberName =#{newName}
+		where memberId =#{oldName}
+	
+	</update>
+	
+	<delete id="delete">
+		delete from member where memberId =#{oldName}
+	</delete>
 
 </mapper>

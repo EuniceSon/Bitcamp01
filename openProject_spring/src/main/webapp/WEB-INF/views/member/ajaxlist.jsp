@@ -5,26 +5,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>회원리스트</title>
-    <style>
-    img {width:300px;}
-	table {border-collapse:collapse;}
-	td, th{border:1px solid black; padding:5px}
-	.table2 {background-color:gray;}
-	.td1 {text-align:center; background-color:black; color:white; font-size:30px; position:relative;}
-	.td1 a {text-decoration:none; color:white; position: absolute; right:0; top:0; font-size: 20px;}
-	 p{margin :5px 0;}
-	.modiContainer {display:inline-block; position:absolute; top:30% ; left:40%; z-index:1; width:300px; display:none}
-	.dimm			{ position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:0; display:none }
-	.newName {width:97%; margin:0; padding:0; height:30px; }
-    .new {margin:0; padding:0}
-    </style>
-    <link rel="stylesheet" href="resources/css/main.css">
-    <link rel="stylesheet" href="resources/css/memberList.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     
 </head>
- <jsp:include page="../top.jsp"></jsp:include>
 <body>
 <div class="dimm"></div>
     <div class="top">
@@ -55,7 +38,7 @@
                <td>${i.joinDate }</td>
                <td>
                    <a href="#" class="modiBtn">수정</a>
-                   <a href="#" class="delBtn">삭제</a>
+                   <a href="#">삭제</a>
                </td>
            </tr>
 
@@ -157,8 +140,7 @@
 						console.log("나의형제들");
 						$('body').empty();
 						$('body').append(data)
-						
-	
+
 				},error:function(data){
 					
 					console.log('error')
@@ -169,8 +151,6 @@
 			$('.dimm').hide();
 		 
 		})
-	
-		
 	$('.delBtn').click(function(){
 		
 		var Idval=$(this).parent().siblings().eq(1).text();
@@ -185,7 +165,6 @@
 				,cache: false
 				,data: {Id:Idval}
 				,success:function(data){
-					
 
 					$('body').empty();
 					$('body').append(data)
