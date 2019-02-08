@@ -47,4 +47,16 @@ public class MemberDAOImpl implements MemberDAO {
 	public List<MemberVO> listAll() throws Exception {
 		return sqlSession.selectList(namespace+".selectMemberAll");
 	}
+
+	@Override
+	public List<MemberVO> listPage(int firstRow, int getRecordCountPerPage) {
+		
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("firstRow", firstRow);  //key 값이  myBatis mapper에서   #{memberId} 같아야 값이 들어감 
+		paramMap.put("getRecordCountPerPage", getRecordCountPerPage);
+		
+		return sqlSession.selectList(namespace+".listPage", paramMap);
+	}
+	
+	
 }

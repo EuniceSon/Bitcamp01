@@ -21,7 +21,12 @@
 	</select>
 	
 	<select id="selectMemberAll" resultType="com.yuni.domain.MemberVO">
-		select * from member 
+		select * from member
+		
+	</select>
+	
+		<select id="listPage" resultType="com.yuni.domain.MemberVO">
+		select * from member limit #{firstRow}, #{getRecordCountPerPage}
 		
 	</select>
 

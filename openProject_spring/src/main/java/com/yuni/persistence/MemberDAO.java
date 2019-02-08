@@ -2,6 +2,7 @@ package com.yuni.persistence;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 
 import com.yuni.domain.MemberVO;
 
@@ -15,4 +16,5 @@ public interface MemberDAO {
 	public MemberVO readWithPW(String memberId, String memberPwd) throws Exception;
 	
 	public List<MemberVO> listAll() throws Exception;
+	public List<MemberVO> listPage(@Param("firstRow") int firstRow,@Param("recordCountPerPage")int getRecordCountPerPage);
 }

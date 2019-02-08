@@ -28,7 +28,7 @@
            </c:if>
       </div>
       <div class="mem_info">
-        <div><strong>회원 번호</strong><span>: ${memberVO.memberNo }</span></div>
+        <div><strong>회원 번호</strong><span>: ${memberVO.no }</span></div>
         <div><strong>회원 아이디</strong><span>: ${memberVO.memberId }</span></div>
         <div><strong>회원 이름</strong><span>: ${memberVO.memberName }</span></div>
           

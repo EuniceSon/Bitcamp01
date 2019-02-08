@@ -47,7 +47,7 @@
         		<c:forEach items="${list }" var="i" varStatus="status">
            
             <tr>
-               <td>${i.memberNo}</td>
+               <td>${i.no}</td>
                <td>${i.memberId }</td>
                <td>${i.memberPwd }</td>
                <td>${i.orgfileName}</td>
@@ -61,29 +61,28 @@
 
            	</c:forEach>
        </table>
-       <div style="background-color:pink; width:950px ; height:30px; font-weight:bold; font-size:13px'">
-       		<div style="width:100px ; margin:0 auto;">
-       			 <c:if test="${nowPage > pageDivision }">
-	        	  	[<a href="<%=request.getContextPath() %>/EmployeeList.do?page=1">◀◀</a>]
-	        	  	[<a href="<%=request.getContextPath() %>/EmployeeList.do?page=${nowPage-1 }">◀</a>]
+		<div style="width:950px;  background-color:pink">
+			<div style="width:200px; margin:0 auto; background-color:pink">
+				 <c:if test="${currentPage > pageDivision }">
+	        	  	[<a href="<%=request.getContextPath() %>/Memberlist?page=1">◀◀</a>]
+	        	  	[<a href="<%=request.getContextPath() %>/Memberlist?page=${currentPage-1 }">◀</a>]
 	        	  </c:if>
 	        	  
-       		<c:forEach begin="${startBlock }" end="${endBlock }" var="i" varStatus="status">
-       			<c:if test="${nowPage==i }">
-       				       			<span style="text-decoration:underline; color:blue">[${status.count }]</span>
- 				</c:if>  
- 				<c:if test="${nowPage!=i }">
-       			<a href="${pageContext.request.contextPath}/Memberlist2.do?page=${status.count }">[${status.count }]</a>
- 				
- 				</c:if>    		
-       		</c:forEach>
-       		 		<c:if test="${endBlock < allPage }">
-	        	  	[<a href="<%=request.getContextPath() %>/EmployeeList.do?page=${nowPage+1 }">▶</a>]
-	        	  	[<a href="<%=request.getContextPath() %>/EmployeeList.do?page=${allPage  }">▶▶</a>]
+	        	  <c:forEach begin="${startBlock }" end="${endBlock }" var="i">
+	        	    <c:if test="${i == currentPage }">
+	        	    	<u><b>[${i }]</b></u>
+	        	    </c:if>
+	        	    <c:if test="${!(i == currentPage) }">
+	        	    	[<a href="<%=request.getContextPath() %>/Memberlist?page=${i }">${i }</a>]
+	        	    </c:if>
+	        	  </c:forEach>
+	        	  
+	        	  <c:if test="${endBlock < PageTotalCount }">
+	        	  	[<a href="<%=request.getContextPath() %>/Memberlist?page=${currentPage+1 }">▶</a>]
+	        	  	[<a href="<%=request.getContextPath() %>/Memberlist?page=${PageTotalCount  }">▶▶</a>]
 	        	  </c:if>
-       		
-       		</div>
-       </div>
+			</div>
+		</div>
        
    </div>
    

@@ -28,6 +28,12 @@ public class JoinServiceImpl implements JoinService {
 	public List<MemberVO> MemberListAll() throws Exception {
 		return memberDao.listAll();
 	}
+
+	@Override
+	public List<MemberVO> MemberListPage(int firstRow, int recordCountPerPage) throws Exception {
+		
+		return memberDao.listPage(firstRow, recordCountPerPage);
+	}
 	
 	
 

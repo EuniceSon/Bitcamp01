@@ -11,8 +11,9 @@
 </head>
 <jsp:include page="../top.jsp"></jsp:include>
 <body>
-   
+  
    <div class="top">
+   
         <div class="inner">
             <h2> 회원가입</h2>
 

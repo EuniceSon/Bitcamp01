@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.yuni.domain.MemberVO;
 import com.yuni.service.LoginService;
@@ -36,30 +37,32 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="/loginForm", method=RequestMethod.POST)
-	public ModelAndView loginPOST(MemberVO vo, HttpServletRequest rq,
+	public ModelAndView loginPOST(MemberVO vo, HttpServletRequest rq,RedirectAttributes rttr,
 			HttpSession session, Model model)throws Exception {
 		
+		String Referer = rq.getHeader("referer").substring(rq.getHeader("referer").indexOf("web/")+3);
 		
+		System.out.println(Referer);
 		MemberVO vo2 = service.login(vo);
+		ModelAndView mav= new ModelAndView();
 		
 		if(vo2!=null) { //회원가입이 되었으면
 			//세션 생성 
 			session=rq.getSession();
 			session.setAttribute("memberVO", vo2);
 			
+			rttr.addAttribute("msg","SUCCESS");
+			logger.info(vo2.getMemberName());  //dao 결과값 받아오는거 확인 할 수 있음 
+			mav.setViewName("redirect:"+Referer);
+			
+			return mav;
 		}
 		
 		logger.info(vo.getMemberId());  //받아오고
-		
+		rttr.addAttribute("msg","FAIL");
 		//model.addAttribute("memberVO", vo2);  // 넘겨 주기 
-		
-		ModelAndView mav= new ModelAndView();
-		
-		logger.info(vo2.getMemberName());  //dao 결과값 받아오는거 확인 할 수 있음 
 		mav.setViewName("redirect:/main");
-		
 		return mav;
-		
 		
 	}
 	

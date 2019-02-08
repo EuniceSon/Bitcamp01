@@ -43,7 +43,7 @@ public class JoinController {
 		
 	}
 	@RequestMapping(value="/join/joinForm" , method=RequestMethod.GET)
-	public void registerGET(MemberVO vo, Model model)throws Exception{
+	public void registerGET( Model model)throws Exception{
 		logger.info("register get.........");
 	}
 
@@ -68,8 +68,7 @@ public class JoinController {
 			String savedName=uploadFile(dir, fileName, file.getBytes());
 			vo.setPicture(savedName);
 			logger.info(dir);
-			model.addAttribute("savedName",savedName);
-			model.addAttribute("MemberVO",vo);
+//			model.addAttribute("savedName",savedName);
 	      }
 		service.register(vo);
 		ModelAndView mav= new ModelAndView();

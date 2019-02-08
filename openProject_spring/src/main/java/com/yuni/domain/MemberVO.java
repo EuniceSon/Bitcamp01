@@ -3,7 +3,7 @@ package com.yuni.domain;
 import java.util.Date;
 
 public class MemberVO {
-	int memberNo;
+	int no;
 	private String memberId;
 	private String memberPwd;
 	private String memberName;
@@ -13,14 +13,14 @@ public class MemberVO {
 	
 	
 	
-	public int getMemberNo() {
-		return memberNo;
+	public int getNo() {
+		return no;
 	}
 
 
 
-	public void setMemberNo(int memberNo) {
-		this.memberNo = memberNo;
+	public void setNo(int no) {
+		this.no = no;
 	}
 
 
@@ -99,11 +99,11 @@ public class MemberVO {
 
 	@Override
 	public String toString() {
-		return "MemberVO [memberNo=" + memberNo + ", memberId=" + memberId + ", memberPwd=" + memberPwd
-				+ ", memberName=" + memberName + ", Picture=" + Picture + ", joinDate=" + joinDate + ", orgfileName="
-				+ orgfileName + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
-				+ super.toString() + "]";
+		return "MemberVO [no=" + no + ", memberId=" + memberId + ", memberPwd=" + memberPwd + ", memberName="
+				+ memberName + ", Picture=" + Picture + ", joinDate=" + joinDate + ", orgfileName=" + orgfileName + "]";
 	}
-
+	
+	
+	
 
 }

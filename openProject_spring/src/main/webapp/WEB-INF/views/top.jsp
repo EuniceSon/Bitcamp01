@@ -24,11 +24,11 @@
             <ul>
             
                 <li><a href="${pageContext.request.contextPath}/join/joinForm">회원가입</a></li>
-                <c:if test="${ empty memberVO }">
+                <c:if test="${ empty memberVO.memberId }">
                 <li><a href="<%=request.getContextPath() %>/login/loginForm">회원로그인</a></li>
                 </c:if>
                
-               <c:if test="${ !empty memberVO }">
+               <c:if test="${ !empty memberVO.memberId }">
                  <li><a href="<%-- <%=request.getContextPath() %>/login/logout --%>#" id="logout">로그아웃</a></li>
            		</c:if>
                 <li><a href="<%=request.getContextPath() %>/myPage/myPageView" id="myPage">회원마이페이지(회원)</a></li>
@@ -60,6 +60,19 @@
 			
 		}
 	})
+	
+
+
+	if(${param.msg == 'SUCCESS'}){
+		alert("로그인에 성공하셨습니다")
+	}
+	
+	if(${param.msg == 'FAIL'}){
+		alert("다시 로그인 해주시길 바랍니다.")
+	}
+
+	
+
 
 </script>
 <!-- </html> -->
