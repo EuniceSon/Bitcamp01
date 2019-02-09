@@ -39,6 +39,25 @@
             <beans:ref bean="authenticationInterceptor"/>
         </interceptor>
     </interceptors>
+    
+    
+    <beans:bean id="loginInterceptor" class="com.yuni.interceptor.LoginInterceptor">
+    </beans:bean>
+    <interceptors>
+        <interceptor>
+            <mapping path="/login/formpost"/>
+            <beans:ref bean="loginInterceptor"/>
+        </interceptor>
+    </interceptors>
+    
+    <beans:bean id="logoutInterceptor" class="com.yuni.interceptor.LogOutInterceptor">
+    </beans:bean>
+    <interceptors>
+        <interceptor>
+            <mapping path="/login/logout"/>
+            <beans:ref bean="logoutInterceptor"/>
+        </interceptor>
+    </interceptors>
 	
 	<context:component-scan base-package="com.yuni.web" />
 	

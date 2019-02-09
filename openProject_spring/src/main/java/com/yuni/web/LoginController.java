@@ -28,23 +28,20 @@ public class LoginController {
 	
 	
 	@RequestMapping(value="/loginForm", method=RequestMethod.GET)
-	public void loginGET(@ModelAttribute("vo")MemberVO vo) {
+	public void loginGET(ModelAndView mav) {
 		//@ModelAttribute 는 submit form 내용 전장해서 전달 받거나 다시 view로 넘겨서 출력하기 위해 사용 되는 Object 이다 
-		
-		ModelAndView mav= new ModelAndView();
-		
+
 		mav.setViewName("/login/loginForm");
 	}
 	
-	@RequestMapping(value="/loginForm", method=RequestMethod.POST)
+	@RequestMapping(value="/formpost", method=RequestMethod.POST)
 	public ModelAndView loginPOST(MemberVO vo, HttpServletRequest rq,RedirectAttributes rttr,
-			HttpSession session, Model model)throws Exception {
+			HttpSession session, ModelAndView mav)throws Exception {
 		
 		String Referer = rq.getHeader("referer").substring(rq.getHeader("referer").indexOf("web/")+3);
 		
-		System.out.println(Referer);
+//		System.out.println(Referer);
 		MemberVO vo2 = service.login(vo);
-		ModelAndView mav= new ModelAndView();
 		
 		if(vo2!=null) { //회원가입이 되었으면
 			//세션 생성 
@@ -53,8 +50,8 @@ public class LoginController {
 			
 			rttr.addAttribute("msg","SUCCESS");
 			logger.info(vo2.getMemberName());  //dao 결과값 받아오는거 확인 할 수 있음 
-			mav.setViewName("redirect:"+Referer);
-			
+			//mav.setViewName("redirect:"+Referer);
+			mav.addObject("referer", Referer);
 			return mav;
 		}
 		
@@ -80,7 +77,7 @@ public class LoginController {
 	
 	  @RequestMapping(value="/logout")
 	    public String logout(HttpSession session) {
-	        session.invalidate(); // 세션 전체를 날려버림
+	      //  session.invalidate(); // 세션 전체를 날려버림
 //	      session.removeAttribute("login"); // 하나씩 하려면 이렇게 해도 됨.
 	        return "redirect:/login/loginForm"; // 로그아웃 후 게시글 목록으로 이동하도록...함
 	    }

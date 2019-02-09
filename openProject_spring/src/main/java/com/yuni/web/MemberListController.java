@@ -24,16 +24,7 @@ public class MemberListController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberListController.class);
 	@Inject
 	private JoinService service;
-	
-//	@RequestMapping(value="/Memberlist" , method=RequestMethod.GET)
-//	public String memberListShow(Model model) throws Exception {
-//		logger.info("show all list....................");
-//		
-//		service.MemberListAll(); 
-//		model.addAttribute("list",service.MemberListAll());
-//		
-//		return "/member/view";
-//	}
+
 	
 	@RequestMapping(value = "/Memberlist", method = RequestMethod.GET)
 	public String getMemberList(HttpServletRequest rq, Model model) throws Exception {

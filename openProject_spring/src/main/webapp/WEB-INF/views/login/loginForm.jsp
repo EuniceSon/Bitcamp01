@@ -22,7 +22,7 @@
    </div>
     <div class="container">
        <div class="content" >
-           <form action="/web/login/loginForm" method="post">
+           <form action="/web/login/formpost" method="post">
                <table>
                     <tr>
                         <th>아이디(이메일)</th>
