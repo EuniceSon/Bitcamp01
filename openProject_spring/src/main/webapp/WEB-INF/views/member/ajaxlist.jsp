@@ -9,6 +9,7 @@
     
 </head>
 <body>
+ <jsp:include page="../top.jsp"></jsp:include>
 <div class="dimm"></div>
     <div class="top">
         <div class="inner">
