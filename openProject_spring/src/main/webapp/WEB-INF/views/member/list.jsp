@@ -145,7 +145,7 @@
 			$.ajax({
 				type:'get'
 				,traditional:true
-				,url:'ajaxModi'
+				,url:'/ajaxModi'
 				,dataType:'html'
 				,contentType: 'text/html; charset=utf-8'
 				,cache: false

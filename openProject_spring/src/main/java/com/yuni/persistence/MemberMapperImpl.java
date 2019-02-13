@@ -29,11 +29,6 @@ public class MemberMapperImpl implements MemberMapper {
 	}
 
 	@Override
-	public MemberVO readMember(String memberId) throws Exception {
-		return (MemberVO) sqlSession.selectOne(namespace + ".selectMember", memberId);
-	}
-
-	@Override
 	public MemberVO readWithPW(String memberId, String memberPwd) throws Exception {
 		// 매개변수를 2개 이상 전달해야하니까 Map 객체를 사용한다.
 		Map<String, Object> paramMap = new HashMap<String, Object>();
@@ -69,6 +64,23 @@ public class MemberMapperImpl implements MemberMapper {
 	@Override
 	public void deleteMember(String memberId) {
 		sqlSession.delete(namespace+".delete", memberId);
+		
+	}
+
+	@Override
+	public MemberVO correctCode(String memberId, String verifyCode) throws Exception {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("memberId", memberId);  //key 값이  myBatis mapper에서   #{memberId} 같아야 값이 들어감 
+		paramMap.put("verifyCode", verifyCode);
+		return sqlSession.selectOne(namespace+".correctCode", paramMap);
+	}
+
+	@Override
+	public void verifyCode(String memberId, String verifyCode) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("memberId", memberId);  //key 값이  myBatis mapper에서   #{memberId} 같아야 값이 들어감 
+		paramMap.put("verifyCode", verifyCode);
+		sqlSession.update(namespace+".verifyCode", paramMap);
 		
 	}
 	

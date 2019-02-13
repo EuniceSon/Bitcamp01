@@ -12,7 +12,6 @@ public interface MemberMapper {
 	public void insertMember(MemberVO vo); // DB의 tbl_member 테이블에 데이터를 추가한다.
 	public void deleteMember(String memberId);
 	
-	public MemberVO readMember(String memberId) throws Exception;
 	
 	public MemberVO readWithPW(String memberId, String memberPwd) throws Exception;
 	
@@ -20,4 +19,7 @@ public interface MemberMapper {
 	public List<MemberVO> listPage(@Param("firstRow") int firstRow,@Param("recordCountPerPage")int getRecordCountPerPage);
 
 	public void updateMember (String oldName, String newName) ;
+	public MemberVO correctCode(String memberId, String verifyCode) throws Exception;
+	public void verifyCode(String memberId, String verifyCode);
+	
 }

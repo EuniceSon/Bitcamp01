@@ -41,7 +41,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			modelAndView.setViewName("redirect:"+referer);
 		}
 
-		super.postHandle(request, response, handler, modelAndView);
+//		super.postHandle(request, response, handler, modelAndView);
 	}
 
 }

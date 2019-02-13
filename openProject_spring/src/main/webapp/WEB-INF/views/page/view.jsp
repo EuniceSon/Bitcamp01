@@ -32,10 +32,44 @@
         <div><strong>회원 아이디</strong><span>: ${memberVO.memberId }</span></div>
         <div><strong>회원 이름</strong><span>: ${memberVO.memberName }</span></div>
           
+          <div>
+          	<a href="" class="verify">정회원 등록</a>
+          </div>
+		<form>
+		<div class="hide">
+			<input type ="text"><input class="click" type="submit" value="인증하기"> 	
+		</div>
+		</form>
+		          
       </div>
        
        
    </div>
+   
+   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+   <script>
+   		$('.hide').hide();
+   		$('.verify').on('click' , function(e){
+   			e.preventDefault();
+   			
+   				$.ajax({
+   					type:'post'
+   					,traditional:true
+   					,url:'/web/sendmail'
+   					,contentType: 'text/html; charset=utf-8'
+   					,cache: false
+   					,data: {Id:'${memberVO.memberId }'}
+   				})
+   			
+   			$(this).hide();
+   			$('.hide').show();
+   			
+   			
+   		})
+   
+   
+   
+   </script>
     
 </body>
 </html>

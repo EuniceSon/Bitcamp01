@@ -38,5 +38,18 @@
 	<delete id="delete">
 		delete from member where memberId =#{oldName}
 	</delete>
+	
+	
+	<update id="verifyCode">
+		update member set verifyCode =#{verifyCode}
+		where memberId =#{memberId}
+	
+	</update>
+	
+	<select id="correctCode" resultType="com.yuni.domain.MemberVO">
+		select * from member where memberId =#{memberId}
+		and verifyCode =#{verifyCode}
+		
+	</select>
 
 </mapper>
