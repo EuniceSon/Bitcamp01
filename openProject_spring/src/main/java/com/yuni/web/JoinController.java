@@ -58,15 +58,15 @@ public class JoinController {
 			logger.info("getContentType(): "+file.getContentType());
 			logger.info("================================================");
 			
-			logger.info(" before "+vo.getOrgfileName());
-			vo.setOrgfileName(file.getOriginalFilename());
-			logger.info(" after "+vo.getOrgfileName());
+			logger.info(" before "+vo.getOriginalPic());
+			vo.setOriginalPic(file.getOriginalFilename());
+			logger.info(" after "+vo.getOriginalPic());
 			
 			String uri = "/upload";
 			String dir=request.getSession().getServletContext().getRealPath(uri); //절대경로 
 			String fileName=file.getOriginalFilename();  //실제 파일 이름
 			String savedName=uploadFile(dir, fileName, file.getBytes());
-			vo.setPicture(savedName);
+			vo.setOriginalPic(savedName);
 			logger.info(dir);
 //			model.addAttribute("savedName",savedName);
 	      }
