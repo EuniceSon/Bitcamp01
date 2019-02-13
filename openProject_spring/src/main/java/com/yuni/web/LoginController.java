@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.yuni.domain.MemberVO;
 import com.yuni.service.LoginService;
+import com.yuni.util.Aes256;
 
 
 @Controller
@@ -25,6 +27,9 @@ public class LoginController {
 	
 	@Inject
 	private LoginService service;
+	
+	@Autowired
+	private Aes256 aes256;
 	
 	
 	@RequestMapping(value="/loginForm", method=RequestMethod.GET)
@@ -42,6 +47,9 @@ public class LoginController {
 		
 //		System.out.println(Referer);
 		MemberVO vo2 = service.login(vo);
+		vo2.setMemberId(aes256.decrypt(vo2.getMemberId()));
+		vo2.setMemberPwd(aes256.decrypt(vo2.getMemberPwd()));
+		
 		
 		if(vo2!=null) { //회원가입이 되었으면
 			//세션 생성 

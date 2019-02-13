@@ -10,9 +10,11 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,12 +22,19 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.yuni.domain.MemberVO;
 import com.yuni.service.JoinService;
+import com.yuni.util.Aes256;
+import com.yuni.util.Sha256;
 
 @Controller
 public class JoinController {
 	
 	@Inject
 	private JoinService service;
+	@Autowired
+	private Sha256 sha256;
+	
+	@Autowired
+	private Aes256 aes256;
 	
 	private static final Logger logger = LoggerFactory.getLogger(JoinController.class);
 	
@@ -46,10 +55,17 @@ public class JoinController {
 	public void registerGET( Model model)throws Exception{
 		logger.info("register get.........");
 	}
-
-	@RequestMapping(value="/join/joinForm" , method=RequestMethod.POST)
-	public ModelAndView registPOST(HttpServletRequest request, MultipartFile file, Model model, MemberVO vo) throws IOException, Exception {
 	
+	@PostMapping("/join/joinForm")
+	//@RequestMapping(value="/join/joinForm" , method=RequestMethod.POST)
+	public ModelAndView registPOST(HttpServletRequest request, MultipartFile file, Model model, MemberVO vo) throws IOException, Exception {
+		
+		vo.setMemberId(	aes256.encrypt(vo.getMemberId()));
+		vo.setMemberPwd(aes256.encrypt(vo.getMemberPwd()));
+		
+		System.out.println(vo.getMemberId());
+		System.out.println(vo.getMemberPwd());
+		//System.out.println(aes256.decrypt(vo.getMemberId()));
 		if(!file.isEmpty()) {
 			logger.info("================================================");
 			logger.info("getName: "+file.getName());
