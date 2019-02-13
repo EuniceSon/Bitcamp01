@@ -11,4 +11,6 @@ public interface JoinService {
 	public void delete (String memberId);
 	public List<MemberVO> MemberListAll()throws Exception;
 	public List<MemberVO> MemberListPage(int firstRow, int recordCountPerPage)throws Exception;
+	
+	public MemberVO selectMember2(String memberId);
 }

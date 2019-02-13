@@ -39,17 +39,18 @@ public class RestApiController {
 			
 			@RequestBody Map<String, Object>params
 			) {
-	
+		
+				String id= (String) params.get("id");
+				String newName= (String) params.get("newname");
 		if(no==1) {
-			String id= (String) params.get("id");
-			String newName= (String) params.get("newName");
 			System.out.println("된다된다");
 			System.out.println(params.get("id"));
-			System.out.println(params.get("newName"));
+			System.out.println(params.get("newname"));
 			service.modify(id, newName);
 		}
 		
-		return no+"";
+		return service.selectMember2(id);
+	//	return no+"";
 		
 	}
 	
