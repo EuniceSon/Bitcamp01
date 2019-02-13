@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.yuni.domain.MemberVO;
 
 @Repository // "@Repository" -> 해당 클래스는 DAO라는 의미
-public class MemberDAOImpl implements MemberDAO {
+public class MemberMapperImpl implements MemberMapper {
 	@Inject
 	private SqlSession sqlSession;  //SqlSessionTemplate을 호출함
 	

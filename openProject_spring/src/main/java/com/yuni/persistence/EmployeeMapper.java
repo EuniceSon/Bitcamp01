@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.yuni.domain.EmployeeDTO;
 
-public interface EmployeeDAO {
+public interface EmployeeMapper {
 	
 	public List<EmployeeDTO> getEmployeeList();
 	public List<EmployeeDTO> getEmployeeListPage(@Param("firstRow") int firstRow,@Param("getRecordCountPerPage") int getRecordCountPerPage);

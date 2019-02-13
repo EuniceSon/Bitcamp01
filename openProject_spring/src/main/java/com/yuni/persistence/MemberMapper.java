@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.yuni.domain.MemberVO;
 
-public interface MemberDAO {
+public interface MemberMapper {
 	public String getTime(); // DB의 현재 시간을 확인한다.
 	
 	public void insertMember(MemberVO vo); // DB의 tbl_member 테이블에 데이터를 추가한다.

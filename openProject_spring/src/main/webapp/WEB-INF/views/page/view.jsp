@@ -19,12 +19,12 @@
    </div>
    <div class="my">
       <div class="img">
-      <h1>${memberVO.picture }</h1>
-     	 <c:if test="${empty memberVO.picture }">
+      <h1>${memberVO.originalPic }</h1>
+     	 <c:if test="${empty memberVO.originalPic }">
           <img src="../upload/7.jpg" alt="default">
           </c:if>
-           <c:if test="${!empty memberVO.picture }">
-           <img src="../upload/${memberVO.picture }" alt="">
+           <c:if test="${!empty memberVO.originalPic }">
+           <img src="../upload/${memberVO.originalPic }" alt="">
            </c:if>
       </div>
       <div class="mem_info">

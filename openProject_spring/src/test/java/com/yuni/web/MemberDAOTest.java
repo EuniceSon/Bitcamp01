@@ -8,13 +8,13 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.yuni.domain.MemberVO;
-import com.yuni.persistence.MemberDAO;
+import com.yuni.persistence.MemberMapper;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/**/root-context.xml"})
 public class MemberDAOTest {
 	@Inject
-	private MemberDAO dao;
+	private MemberMapper dao;
 	
 	@Test
 	public void testTime() throws Exception {

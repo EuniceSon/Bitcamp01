@@ -50,7 +50,7 @@
                <td>${i.no}</td>
                <td>${i.memberId }</td>
                <td>${i.memberPwd }</td>
-               <td>${i.orgfileName}</td>
+               <td>${i.originalPic}</td>
                <td>${i.memberName }</td>
                <td>${i.joinDate }</td>
                <td>

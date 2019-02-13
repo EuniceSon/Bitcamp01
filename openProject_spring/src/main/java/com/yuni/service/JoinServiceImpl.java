@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.yuni.domain.MemberVO;
-import com.yuni.persistence.MemberDAO;
+import com.yuni.persistence.MemberMapper;
 
 
 //왜 interface 로 해야하는거... 의미가 없어 보이는데...?
@@ -16,7 +16,7 @@ import com.yuni.persistence.MemberDAO;
 public class JoinServiceImpl implements JoinService {
 	
 	@Inject
-	private MemberDAO memberDao ;
+	private MemberMapper memberDao ;
 
 	@Override
 	public void register(MemberVO vo) {
