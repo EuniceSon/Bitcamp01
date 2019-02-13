@@ -1,15 +1,24 @@
 package com.yuni.web;
 
+import javax.inject.Inject;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.yuni.service.MailSendService;
+
 @Controller
 public class EmailController {
 	
-	//@PostMapping(value="sendemail")
 	
+	
+	@Inject
+	MailSendService service; 
+	
+	
+	//@PostMapping(value="sendemail")
 	@RequestMapping(value="sendmail")
 	public void sendEmail()	{
 		
