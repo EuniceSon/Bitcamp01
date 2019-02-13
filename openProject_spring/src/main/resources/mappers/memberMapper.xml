@@ -12,7 +12,7 @@
 	<insert id="insertMember">
 		
 		insert into member(memberId, memberPwd, memberName, memberPic, originalPic) 
-		values(#{memberId} ,#{memberPwd} ,#{memberName} ,#{Picture},#{orgfileName} )
+		values(#{memberId} ,#{memberPwd} ,#{memberName} ,#{memberPic},#{originalPic} )
 	</insert>
 	
 	<select id="selectMember" resultType="com.yuni.domain.MemberVO">
