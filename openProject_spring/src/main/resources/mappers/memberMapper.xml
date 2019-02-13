@@ -51,5 +51,10 @@
 		and verifyCode =#{verifyCode}
 		
 	</select>
+	
+		<select id="selectMember2" resultType="com.yuni.domain.MemberVO">
+		select * from member where memberId = #{memberId}
+		
+	</select>
 
 </mapper>

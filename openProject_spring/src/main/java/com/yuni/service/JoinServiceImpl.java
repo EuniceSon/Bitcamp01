@@ -45,8 +45,10 @@ public class JoinServiceImpl implements JoinService {
 	public void delete(String memberId) {
 		memberDao.deleteMember(memberId);
 	}
-	
-	
+
+	public MemberVO selectMember2(String memberId) {
+		return memberDao.selectMember2(memberId);
+	}
 	
 
 }

@@ -14,6 +14,7 @@ http://localhost/app/member/memberReg
 		<li><a href="member/view">view member1</a></li>
 		<li><a href="member/memberReg1">reg member1</a></li>
 		<li><a href="rest/msgs">rest/msgs</a></li>
+		<li><a href="rest/form">rest/form</a></li>
 		
 	</ul>
 

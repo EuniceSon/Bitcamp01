@@ -21,5 +21,5 @@ public interface MemberMapper {
 	public void updateMember (String oldName, String newName) ;
 	public MemberVO correctCode(String memberId, String verifyCode) throws Exception;
 	public void verifyCode(String memberId, String verifyCode);
-	
+	public MemberVO selectMember2(String memberId);
 }

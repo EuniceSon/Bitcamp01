@@ -84,5 +84,11 @@ public class MemberMapperImpl implements MemberMapper {
 		
 	}
 	
+	public MemberVO selectMember2(String memberId) {
+		
+		
+		return sqlSession.selectOne(namespace + ".selectMember2", memberId);
+	}
+	
 	
 }

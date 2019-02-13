@@ -3,6 +3,7 @@ package com.yuni.web;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -17,6 +18,13 @@ public class SampleController {
 		logger.info("doB called.........");
 		
 		return "result"; // doC 메소드값으로 사용된 result 는 결과적으로 /WEB-INF/views/result.jsp 파일을 찾아서 실행 함 
+	}
+	
+	@GetMapping("/rest/form")
+	public String toForm () {
+		
+		
+		return "/rest/form";
 	}
 
 }
