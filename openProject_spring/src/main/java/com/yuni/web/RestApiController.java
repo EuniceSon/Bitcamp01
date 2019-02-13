@@ -50,7 +50,6 @@ public class RestApiController {
 		}
 		
 		return service.selectMember2(id);
-	//	return no+"";
 		
 	}
 	
